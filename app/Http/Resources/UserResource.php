@@ -15,8 +15,13 @@ class UserResource extends JsonResource
      */
     public function toArray(Request $request): array
     {
-        $data = AdminResource::make(Auth::user());
-        $token = $this->createToken("Token", ['role:admin'])->plainTextToken;
+        if ($request->route()->getActionMethod() == "adminLogin") {
+            $data = AdminResource::make(Auth::user());
+            $token = $this->createToken("Token", ['role:admin'])->plainTextToken;
+        } else {
+            $data = EmployeeResource::make(Auth::guard('employee')->user());
+            $token = $this->createToken("Token", ['role:employee'])->plainTextToken;
+        }
         return [
             'user' => $data,
             'token' => $token,

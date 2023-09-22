@@ -13,9 +13,11 @@ return new class extends Migration
     {
         Schema::create('employees', function ($table) {
             $table->id();
-            $table->string('employee_id');
             $table->string('name');
+            $table->string('phone_no');
+            $table->string('employee_id');
             $table->string('password');
+            $table->unsignedBigInteger('branch_id')->nullable();
 
             $table->boolean('is_active')->default(1);
             $table->softDeletes();
