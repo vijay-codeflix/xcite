@@ -18,4 +18,9 @@ class branch extends Model
         'closing_time',
         'is_active',
     ];
+
+    public function employees()
+    {
+        return $this->belongsToMany(Employee::class, 'branch_employees');
+    }
 }

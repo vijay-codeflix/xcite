@@ -19,4 +19,9 @@ class Employee extends Authenticatable
         'is_active',
         'branch_id'
     ];
+
+    public function branches()
+    {
+        return $this->belongsToMany(Branch::class, 'branch_employees');
+    }
 }
