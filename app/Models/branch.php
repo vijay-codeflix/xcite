@@ -21,6 +21,6 @@ class branch extends Model
 
     public function employees()
     {
-        return $this->belongsToMany(Employee::class, 'branch_employees');
+        return $this->belongsToMany(Employee::class, 'branch_employee');
     }
 }

@@ -22,6 +22,6 @@ class Employee extends Authenticatable
 
     public function branches()
     {
-        return $this->belongsToMany(Branch::class, 'branch_employees');
+        return $this->belongsToMany(Branch::class, 'branch_employee');
     }
 }
