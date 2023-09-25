@@ -17,7 +17,10 @@ class EmployeeFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            'employee_id' => 'EMP' . rand(100, 9999),
+            'name' => fake()->firstname(),
+            'phone_no' => fake()->phoneNumber(),
+            'password' => bcrypt('12345678'),
         ];
     }
 }
