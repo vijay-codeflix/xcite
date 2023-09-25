@@ -47,6 +47,7 @@ class AuthController extends BaseController
     }
     public function employeeLogout(Request $request)
     {
+        $this->emp_login->storeOrUpdate(['logout_at' => date('Y-m-d H:i:s'), 'employee_id' => $request->user()->id], $request->user()->loginHistory()->latest()->first()->id);
         $request->user()->currentAccessToken()->delete();
         ResponseHelper::sendSuccess('Logout successfull');
     }

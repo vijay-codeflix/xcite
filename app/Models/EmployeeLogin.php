@@ -13,6 +13,6 @@ class EmployeeLogin extends Model
         'employee_id',
         'branch_id',
         'ip',
-        'is_active',
+        'logout_at',
     ];
 }

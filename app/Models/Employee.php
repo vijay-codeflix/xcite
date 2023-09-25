@@ -24,4 +24,8 @@ class Employee extends Authenticatable
     {
         return $this->belongsToMany(Branch::class, 'branch_employee');
     }
+    public function loginHistory()
+    {
+        return $this->hasMany(EmployeeLogin::class, 'employee_id');
+    }
 }

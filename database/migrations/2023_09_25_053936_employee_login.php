@@ -17,8 +17,8 @@ return new class extends Migration
             $table->unsignedBigInteger('branch_id');
             $table->string('ip');
 
-            $table->boolean('is_active')->default(1);
             $table->softDeletes();
+            $table->timestamp('logout_at')->nullable();
             $table->timestamp('created_at')->useCurrent();
             $table->timestamp('updated_at')->useCurrentOnUpdate()->nullable();
         });
