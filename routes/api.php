@@ -1,6 +1,7 @@
 
 <?php
 
+use App\Http\Controllers\Api\V1\BranchController;
 use App\Helper\ResponseHelper;
 use App\Http\Controllers\Api\V1\AdminController;
 use App\Http\Controllers\Api\V1\AuthController;
@@ -21,16 +22,21 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
-});
 
+
+Route::apiResource('branches', BranchController::class);
 
 Route::prefix('v1')->group(function () {
 
+  // login route
+  
     Route::post('admin/login', [AuthController::class, 'adminLogin']);
     Route::post('employee/login', [AuthController::class, 'employeeLogin']);
+  
     Route::group(['middleware' => 'auth:sanctum'], function () {
+      
+      // auth route here
+      
         Route::group(['middleware' => 'type.admin', 'prefix' => 'admin'], function () {
             Route::get('/user', function (Request $request) {
                 return ResponseHelper::sendSuccess('Admin Detail', ['user' => AdminResource::make($request->user())]);
@@ -40,6 +46,7 @@ Route::prefix('v1')->group(function () {
 
             Route::apiResource('employees', EmployeeController::class);
         });
+      
         Route::group(['middleware' => 'type.employee', 'prefix' => 'employee'], function () {
             Route::get('/user', function (Request $request) {
                 return ResponseHelper::sendSuccess('Employee Detail', ['user' => EmployeeResource::make($request->user())]);

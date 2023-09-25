@@ -2,6 +2,8 @@
 
 namespace App\Providers;
 
+use App\Repository\Branch\BranchInterface;
+use App\Repository\Branch\BranchRepository;
 use App\Repository\Admin\AdminInterface;
 use App\Repository\Admin\AdminRepository;
 use App\Repository\Employee\EmployeeInterface;
@@ -16,6 +18,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
+        $this->app->bind(BranchInterface::class, BranchRepository::class);
         $this->app->bind(AdminInterface::class, AdminRepository::class);
         $this->app->bind(EmployeeInterface::class, EmployeeRepository::class);
     }

@@ -1,13 +1,23 @@
 <?php
 
-const STATUS = [
-    'ACTIVE' => 1,
-    'INACTIVE' => 0,
-];
-
 const VALIDATION = [
-    'MAX_STRING_LENGTH' => 255,
-    'MAX_EMAIL_LENGTH' => 30,
+    'MAX_LENGTH_STRING' => 255,
+    'MAX_LENGTH_PHONE' => 12,
+    'MAX_LENGTH_EMAIL' => 35,
+    'MAX_LENGTH_PINCODE' => 6, 
+    'MAX_LENGTH_ADDRESS' => 150,  
     'MIN_PASSWORD_LENGTH' => 8,
     'PHONE_LENGTH' => '10,12',
 ];
+
+const STATUS = [
+    'ACTIVE' => 1,
+    'INACTIVE' => 0,
+]; 
+
+
+const IMAGESIZE = 2048;
+
+const PAGINATION = [
+    'DEFAULT' => 10,
+  ];

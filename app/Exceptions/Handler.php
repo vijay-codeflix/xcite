@@ -2,8 +2,12 @@
 
 namespace App\Exceptions;
 
-use App\Helper\ResponseHelper;
+
+use App\Helpers\ResponseHelper;
+use Illuminate\Database\Eloquent\ModelNotFoundException; 
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
+use Illuminate\Http\Response;
+use stdClass;
 use Throwable;
 
 use Illuminate\Database\Eloquent\ModelNotFoundException;
@@ -32,10 +36,11 @@ class Handler extends ExceptionHandler
             //
         });
     }
+
     public function render($request, Throwable $exception)
     {
         return ($exception instanceof ModelNotFoundException)
             ?   ResponseHelper::sendError('Data not found', code: Response::HTTP_NOT_FOUND)
-            : parent::render($request, $exception);
+            : parent::render($request, $exception); 
     }
 }
