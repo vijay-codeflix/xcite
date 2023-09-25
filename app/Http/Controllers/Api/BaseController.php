@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use Exception;
+use Illuminate\Http\Request;
 use Spatie\QueryBuilder\QueryBuilder;
 
 class BaseController extends Controller
@@ -24,4 +25,5 @@ class BaseController extends Controller
             return $this->filter_model;
         }
     }
+
 }
