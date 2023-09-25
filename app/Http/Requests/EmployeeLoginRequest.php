@@ -13,6 +13,7 @@ use Illuminate\Support\Facades\RateLimiter;
 use Illuminate\Support\Str;
 use Illuminate\Validation\ValidationException;
 
+
 class EmployeeLoginRequest extends FormRequest
 {
     /**
@@ -33,7 +34,8 @@ class EmployeeLoginRequest extends FormRequest
     {
         return [
             'employee_id' => 'required|exists:employees,employee_id,is_active,' . STATUS['ACTIVE'],
-            'password' => 'required'
+            'password' => 'required',
+            'branch_id' => 'required',
         ];
     }
 
