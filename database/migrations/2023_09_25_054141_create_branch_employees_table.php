@@ -11,17 +11,16 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('employees', function ($table) {
+        Schema::create('branch_employee', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('phone_no');
-            $table->string('employee_id');
-            $table->string('password');
-            $table->boolean('is_active')->default(1);
+            $table->unsignedBigInteger('employee_id');
+            $table->unsignedBigInteger('branch_id');
             $table->softDeletes();
-
             $table->timestamp('created_at')->useCurrent();
             $table->timestamp('updated_at')->useCurrentOnUpdate()->nullable();
+
+            $table->foreign('employee_id')->references('id')->on('employees');
+            $table->foreign('branch_id')->references('id')->on('branches');
         });
     }
 
@@ -30,6 +29,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('employees');
+        Schema::dropIfExists('branch_employee');
     }
 };

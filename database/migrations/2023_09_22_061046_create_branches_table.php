@@ -16,8 +16,8 @@ return new class extends Migration
             $table->string('branch_name', 100);
             $table->string('address', 200);
             $table->string('phone_no', 50);
-            $table->dateTime('opening_time');
-            $table->dateTime('closing_time');
+            $table->time('opening_time');
+            $table->time('closing_time');
             $table->tinyInteger('is_active')->default(1);
             $table->softDeletes();
             $table->timestamp('created_at')->useCurrent();
